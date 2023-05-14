@@ -1,0 +1,52 @@
+# service name
+spring:
+  application:
+    name: mall
+  config:
+    use-legacy-processing: true # 레거시 config 구동 환경으로 하겠다
+    activate:
+      on-profile: prd
+  profiles:
+    active: prd
+
+# service setting
+server:
+  port: 8080 # 실행 포트
+  servlet:
+    encoding:
+      force-response: true
+      charset: UTF-8
+  error:
+    include-exception: false
+    include-binding-errors: never
+    include-message: never
+    include-stacktrace: never
+    path: '/error'
+    whitelabel:
+      enabled: false
+
+# default setting
+mandatory_file_encoding: UTF-8
+mvc:
+  throw-exception-if-no-handler-found: true
+web:
+  resources:
+    add-mappings: false
+
+# security properties
+properties:
+  securityProperty:
+    ignoreUrl:
+      - "/"
+      - "/*.html"
+      - "/*.ico"
+      - "/resources/**"
+      - "/resources/"
+      - "/css/**"
+      - "/vendor/**"
+      - "/js/**"
+      - "/script/**"
+      - "/images/**"
+      - "/fonts/**"
+      - "/lib/**"
+      - "/v3/api-docs/**"
